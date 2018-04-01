@@ -13,39 +13,27 @@
 
   <body id="page-top">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <nav class="navbar fixed-top" id="mainNav">
       <div class="container">
         <img id="enslogo" src="img/ens.svg" />
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">ENSnow</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" href="#aboutmodal">About</a>
-            </li>
-          </ul>
-        </div>
+
       </div>
     </nav>
 
-    <section id="register">
+    <section id="register" class="splash">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-10 text-center was-validated">
-            <h2 class="section-heading">Search for subdomains</h2>
-            <input type="search" id="name" class="form-control form-control-lg" />
+          <div id="searchbox" class="text-center was-validated">
+            <h2 class="section-heading">Give your Ethereum account a unique name</h2>
+            <input type="search" id="name" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search for a name..." class="form-control form-control-lg" />
+            <div id="user-help"></div>
           </div>
         </div>
       </div>
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-10 text-center">
-            <div class="list-group" id="results">
-            </div>
-          </div>
+          <div class="text-center">
+            <ul class="row list-group" id="results">
+            </ul>
         </div>
       </div>
     </section>

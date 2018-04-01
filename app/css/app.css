@@ -25,9 +25,18 @@ body {
 }
 
 nav {
-  background: black;
+  background: white;
+  color: black;
+}
+
+nav.navbar {
+  padding: 20px;
 }
 
 #readonlymodal img {
   width: 100px;
+}
+
+.navbar-dark {
+  color: black;
 }
