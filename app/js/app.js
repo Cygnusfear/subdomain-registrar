@@ -169,6 +169,7 @@ window.App = {
   clearDomains: function() {
     $("#results").empty();
   },
+  checkRegistered: async function() {},
   checkDomains: async function(domains, subdomain, parallelism) {
     this.lookups = Promise.map(
       domains,
@@ -182,7 +183,9 @@ window.App = {
           tld;
 
         var item = $(
-          '<li href="#" class="col-md-3 col-sm-6 list-group-item list-group-item-action flex-column align-items-start disabled">',
+          '<li data-name="' +
+            domain.name +
+            '" href="#" class="col-md-3 col-sm-6 list-group-item list-group-item-action flex-column align-items-start disabled">',
         );
         item.data({ domain: domain, subdomain: subdomain });
 
@@ -198,7 +201,15 @@ window.App = {
         } else {
           item.insertBefore(insertPoint.first());
         }
-
+        $("ul").each(function() {
+          $(this).html(
+            $(this)
+              .children("li")
+              .sort(function(a, b) {
+                return $(b).data("name") < $(a).data("name") ? 1 : -1;
+              }),
+          );
+        });
         var info = await registrarVersions[domain.version].query(
           domain,
           subdomain,

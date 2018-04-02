@@ -1,25 +1,58 @@
 html {
   position: relative;
   min-height: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
   padding-top: 100px;
-  padding-bottom: 60px;
+  padding-bottom: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   font-weight: 200;
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .footer {
-  position: absolute;
+  flex: 1;
+  position: relative;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
-  font-size: 80%;
+  left: 0;
+  padding: 1rem;
+
+  line-height: inherit; /* Vertically center the text there */
+  background-color: #fafafa;
+  height: auto;
+}
+
+.footer h2 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0 0 10px 0;
+}
+
+.footer p {
+  font-size: 0.75rem;
+}
+
+#register {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
 }
 
 #enslogo {
@@ -69,27 +102,9 @@ h2 {
   margin-bottom: 80px;
 }
 
-#register.splash .container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+#register.splash #searchcontainer {
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  min-height: calc(60vh);
-  padding: 0 20px;
-}
-
-#register.splash .container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  min-height: calc(60vh);
   padding: 0 20px;
 }
 
@@ -115,8 +130,12 @@ h2 {
   flex-wrap: wrap;
 }
 
-input {
-  border-top: 0px;
+#register #searchbox input {
+  background: url(../img/search.png);
+  background-repeat: no-repeat;
+  background-position: 98.5% center;
+  background-size: 30px;
+  margin-right: 30px;
 }
 
 input::placeholder {
@@ -214,6 +233,6 @@ h5 {
 
 .price {
   font-size: 0.65rem;
-  color: blue;
+  color: #7986cb;
   padding-left: 10px;
 }
