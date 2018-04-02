@@ -56,10 +56,12 @@ a {
 h2 {
   font-weight: 200;
   font-size: 32px;
+  padding-bottom: 20px;
 }
 
 ::selection {
-  background-color: #28a745;
+  background-color: #50b855;
+  color: white;
 }
 
 #results {
@@ -110,6 +112,7 @@ h2 {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 input {
@@ -123,7 +126,8 @@ input::placeholder {
 }
 
 #searchbox {
-  min-width: calc(50%);
+  min-width: calc(70%);
+  min-width: calc(70%);
 }
 
 #user-help {
@@ -143,16 +147,18 @@ button.list-group-item-danger {
 }
 
 ul {
-  -webkit-flex: 0 1 25%;
-  -ms-flex: 0 1 25%;
-  flex: 0 1 25%;
+  -webkit-flex: 0 1 33%;
+  -ms-flex: 0 1 33%;
+  flex: 0 1 33%;
 }
 
 li {
-  margin: 5px 0;
-  max-width: 25%;
+  margin: 10px 0;
+  max-width: 33%;
   padding: 0 20px;
   flex-flow: row wrap;
+  flex-grow: 1;
+  width: 33%;
 }
 
 .list-group {
@@ -166,8 +172,10 @@ li {
   background: none !important;
 }
 
-.list-group-item-danger {
-  text-decoration: line-through;
+.list-group-item-danger,
+.list-group-item-danger:hover {
+  text-decoration: line-through !important;
+  color: rgb(200, 200, 200);
 }
 
 .list-group-item-danger,
@@ -187,15 +195,16 @@ li {
 }
 
 h5 {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: rgb(100, 100, 100);
   text-overflow: ellipsis;
   overflow: hidden;
   direction: rtl;
+  font-weight: 200;
 }
 
 .subdomain {
-  font-weight: bolder;
+  font-weight: 600;
   color: black;
 }
 
