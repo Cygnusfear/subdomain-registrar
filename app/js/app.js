@@ -107,16 +107,16 @@ window.App = {
         namehash.hash("resolver.eth"),
       );
       $("#user-help").html(
-        `Turn <div class="public-key">${
+        `Turn your public key <div class="public-key">${
           web3.eth.accounts[0]
-        }</div> into an easy to read ENS name.`,
+        }</div> into a memorable ENS name.`,
       );
     } catch (e) {
       $("#wrongnetworkmodal").modal("show");
     }
 
     $(".continue-button").click(() => {
-      console.log("close modal");
+      $(".modal").modal("hide");
     });
 
     $("#name").keyup(function() {

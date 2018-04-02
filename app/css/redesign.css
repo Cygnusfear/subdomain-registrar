@@ -254,6 +254,73 @@ span.domainname {
   font-weight: 500;
 }
 
+button {
+  float: right;
+  background-color: #fff;
+  color: white;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.25em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
+  position: relative;
+  vertical-align: top;
+  user-select: none;
+  background-color: #50b855;
+  border-color: #50b855;
+  cursor: pointer;
+  justify-content: center;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #e9ecef;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  background-color: #50b855;
+  border-color: #50b855;
+  color: white !important;
+}
+
+.modal-body {
+  color: #555;
+}
+
+.modal-dialog {
+  top: 120px;
+}
+
+.modal-content {
+  border: 0px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+
+.modal-backdrop.show {
+  opacity: 0.3;
+}
+
 /*Spinning*/
 
 @keyframes rotating {
