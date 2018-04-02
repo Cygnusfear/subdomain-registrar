@@ -232,6 +232,7 @@ h5 {
   overflow: hidden;
   direction: rtl;
   font-weight: 200;
+  white-space: nowrap;
 }
 
 .subdomain {
@@ -251,4 +252,25 @@ h5 {
 
 span.domainname {
   font-weight: 500;
+}
+
+/*Spinning*/
+
+@keyframes rotating {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #50b855;
+  animation: rotating 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  display: inline-block;
+  top: 3px;
+  position: relative;
+  left: 4px;
 }

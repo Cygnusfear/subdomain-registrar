@@ -94,6 +94,8 @@ window.App = {
     SubdomainRegistrar.setProvider(web3.currentProvider);
     ENS.setProvider(web3.currentProvider);
 
+    $("#user-help").html(`Connecting to Web3 <div class="spinner"></div>`);
+
     try {
       self.ens = await ENS.deployed();
 
@@ -109,7 +111,6 @@ window.App = {
           web3.eth.accounts[0]
         }</div> into an easy to read ENS name.`,
       );
-      $("#searchbox input").removeClass("loading");
     } catch (e) {
       $("#wrongnetworkmodal").modal("show");
     }
@@ -134,7 +135,14 @@ window.App = {
           var name = $("#name");
           if (!name.get(0).validity.valid) {
             self.clearDomains();
+            $("#user-help").html(`Your search contains invalid characters.`);
             return;
+          } else {
+            $("#user-help").html(
+              `Turn <div class="public-key">${
+                web3.eth.accounts[0]
+              }</div> into an easy to read ENS name.`,
+            );
           }
           var subdomain = namehash.normalize(
             $("#name")
@@ -151,10 +159,13 @@ window.App = {
             this.lookups.cancel();
           }
           if (subdomain != "") {
+            $("#register").removeClass("splash");
             self.checkDomains(domainnames, subdomain, 2);
+          } else {
+            $("#register").addClass("splash");
           }
         }.bind(this),
-        500,
+        200,
       ),
     );
   },
@@ -175,11 +186,12 @@ window.App = {
   },
   checkRegistered: async function() {},
   checkDomains: async function(domains, subdomain, parallelism) {
-    $("#searchbox input").addClass("loading");
+    $("#user-help").html(
+      `Searching available domain names <div class="spinner"></div>`,
+    );
     this.lookups = Promise.map(
       domains,
       async function(domain) {
-        $("#register").removeClass("splash");
         var name =
           subdomain +
           ".<span class='subdomain'>" +
@@ -226,7 +238,7 @@ window.App = {
     );
     await this.lookups;
     this.lookups = undefined;
-    $("#searchbox input").removeClass("loading");
+    $("#user-help").html("");
   },
   setItemState: function(domain, subdomain, item, info) {
     if (subdomain != this.last) return;
