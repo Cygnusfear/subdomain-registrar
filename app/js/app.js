@@ -104,15 +104,19 @@ window.App = {
       self.resolverAddress = await self.ens.resolver(
         namehash.hash("resolver.eth"),
       );
-      console.log(web3);
       $("#user-help").html(
         `Turn <div class="public-key">${
           web3.eth.accounts[0]
         }</div> into an easy to read ENS name.`,
       );
+      $("#searchbox input").removeClass("loading");
     } catch (e) {
       $("#wrongnetworkmodal").modal("show");
     }
+
+    $(".continue-button").click(() => {
+      console.log("close modal");
+    });
 
     $("#name").keyup(function() {
       try {
@@ -171,6 +175,7 @@ window.App = {
   },
   checkRegistered: async function() {},
   checkDomains: async function(domains, subdomain, parallelism) {
+    $("#searchbox input").addClass("loading");
     this.lookups = Promise.map(
       domains,
       async function(domain) {
@@ -185,7 +190,7 @@ window.App = {
         var item = $(
           '<li data-name="' +
             domain.name +
-            '" href="#" class="col-md-3 col-sm-6 list-group-item list-group-item-action flex-column align-items-start disabled">',
+            '" class="col-md-3 col-sm-6 list-group-item list-group-item-action flex-column align-items-start disabled">',
         );
         item.data({ domain: domain, subdomain: subdomain });
 
@@ -201,15 +206,15 @@ window.App = {
         } else {
           item.insertBefore(insertPoint.first());
         }
-        $("ul").each(function() {
-          $(this).html(
-            $(this)
-              .children("li")
-              .sort(function(a, b) {
-                return $(b).data("name") < $(a).data("name") ? 1 : -1;
-              }),
-          );
-        });
+        // $("ul").each(function() {
+        //   $(this).html(
+        //     $(this)
+        //       .children("li")
+        //       .sort(function(a, b) {
+        //         return $(b).data("name") < $(a).data("name") ? 1 : -1;
+        //       }),
+        //   );
+        // });
         var info = await registrarVersions[domain.version].query(
           domain,
           subdomain,
@@ -221,6 +226,7 @@ window.App = {
     );
     await this.lookups;
     this.lookups = undefined;
+    $("#searchbox input").removeClass("loading");
   },
   setItemState: function(domain, subdomain, item, info) {
     if (subdomain != this.last) return;
