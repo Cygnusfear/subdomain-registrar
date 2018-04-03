@@ -106,11 +106,17 @@ window.App = {
       self.resolverAddress = await self.ens.resolver(
         namehash.hash("resolver.eth"),
       );
-      $("#user-help").html(
-        `Turn your public key <div class="public-key">${
+      let userHelp = "";
+      if (web3.eth.accounts[0] !== undefined) {
+        userHelp = `Turn your address <div class="address">${
           web3.eth.accounts[0]
-        }</div> into a memorable ENS name.`,
-      );
+        }</div> into a memorable ENS name.`;
+      }
+      $("#user-help").html(userHelp);
+      $("#searchbox input")
+        .prop("disabled", false)
+        .attr("placeholder", "Find your perfect name...")
+        .focus();
     } catch (e) {
       $("#wrongnetworkmodal").modal("show");
     }
@@ -139,7 +145,7 @@ window.App = {
             return;
           } else {
             $("#user-help").html(
-              `Turn <div class="public-key">${
+              `Turn <div class="address">${
                 web3.eth.accounts[0]
               }</div> into an easy to read ENS name.`,
             );

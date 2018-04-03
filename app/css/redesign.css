@@ -172,7 +172,7 @@ input::placeholder {
   font-size: 0.76rem;
 }
 
-.public-key {
+.address {
   display: inline;
   font-family: monospace;
   font-size: 0.8rem;
